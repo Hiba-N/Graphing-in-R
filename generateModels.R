@@ -1,7 +1,8 @@
+source("constants.R")
 
 args <- commandArgs(trailingOnly= TRUE)
 
-if(length(args) != 1 || args not %in% allowed_arguments){
+if(length(args) != 1 || args not %in% ALLOWED_ARGS){
     cat("usage example: Rscript generateModels.R 1/2/3\n")
     quit()
 }
