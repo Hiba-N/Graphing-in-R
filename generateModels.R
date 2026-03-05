@@ -2,17 +2,17 @@ source("constants.R")
 source("utilities.R")
 
 args <- commandArgs(trailingOnly= TRUE)
-args <- as.numeric(args)
+args <- as.numeric(args) #ensuring args are numeric as per choices allowed
 
 generate.model <- function(args){
 
-    if(length(args) != 1 || !(args %in% ALLOWED_ARGS)){
+    if(length(args) != 1 || !(args %in% ALLOWED_ARGS)){ #check to ensure only one arg is given and is valid
     cat("usage example: Rscript generateModels.R 1/2/3\n")
     quit()
 }
 
-    all.data <- read_in.file()
-    product.data <- read_in.product(all.data, PRODUCT)
+    all.data <- read_in.file() #reading in file as dataframe, and cleaning file of all meta data
+    product.data <- read_in.product(all.data, PRODUCT) #subsetting to dataframe, of concerned product only
 
     if (args[1] == 1){
         cat("Command found: ", args[1], "\ninitiating (1)")
@@ -31,4 +31,4 @@ generate.model <- function(args){
     }
 }
 
-generate.model(args)
+generate.model(args) #main function
